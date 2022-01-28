@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
+    <link th:href="@{/css/commonView.css}" rel="stylesheet" />
     <link th:href="@{/css/slideView.css}" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,9 +17,11 @@
         <a th:href="@{/common}">Common View</a>
         <a>Settings</a>
     </div>
-    <a id="upButton">∧</a>
-    <a id="topButton">▲</a>
-    <a id="downButton">∨</a>
+    <div id="buttonDiv">
+        <a id="upButton">∧ Button</a>
+        <a id="topButton">▲</a>
+        <a id="downButton">∨ Button</a>
+    </div>
     <div id="mainFrame">
         <div class="paragraph" id="whoAmI">
             <h1>Who Am I?</h1>

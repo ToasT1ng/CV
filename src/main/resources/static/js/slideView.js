@@ -72,11 +72,12 @@ $(document).ready(function () {
         goToTop();
     });
 
-
     function goDown() {
         if (pos < count) {
             $('#mainFrame > div:nth-child('+pos+')').animate({top: "-=" + theHeight}, animateTime);
+            $('#mainFrame > div:nth-child('+pos+')').fadeOut(100);
             pos++;
+            $('#mainFrame > div:nth-child('+pos+')').fadeIn(100);
             $('#mainFrame > div:nth-child('+pos+')').animate({top: "-=" + theHeight}, animateTime);
         }
     }
@@ -84,13 +85,24 @@ $(document).ready(function () {
     function goUp() {
         if (pos > 1) {
             $('#mainFrame > div:nth-child('+pos+')').animate({top: "+=" + theHeight}, animateTime);
+            $('#mainFrame > div:nth-child('+pos+')').fadeOut(100);
             pos--;
+            $('#mainFrame > div:nth-child('+pos+')').fadeIn(100);
             $('#mainFrame > div:nth-child('+pos+')').animate({top: "+=" + theHeight}, animateTime);
         }
     }
 
     function goToTop() {
-        $('#mainFrame div').animate({marginTop: "0px"});
+        theHeight = $(window).height();
+        var currentPositionPercent = theHeight * 0.2;
+        var downPositionPercent = theHeight * 1.2;
+        for (var index = 1; index <= count; index++) {
+            if (index === 1) {
+                $('#mainFrame > div:nth-child(' + index + ')').animate({top: currentPositionPercent}, 0);
+            } else {
+                $('#mainFrame > div:nth-child(' + index + ')').animate({top: downPositionPercent}, 0);
+            }
+        }
         pos = 1;
     }
 });
