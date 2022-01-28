@@ -1,0 +1,180 @@
+body {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 18pt;
+}
+
+body { overflow: hidden; }
+body * { touch-action: none; }
+
+a:link {
+    color: #7E7E7E;
+}
+
+a:visited {
+    color: #AAAAAA;
+}
+
+#mainFrame {
+    width: 60%;
+    margin: 5% auto;
+}
+
+#navigator {
+    width: 20%;
+    text-align: right;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
+    font-size: 14pt;
+}
+
+#navigator a {
+    padding-left: 5% ;
+    text-decoration: none;
+    color: black;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: 35pt;
+}
+
+#picture {
+    float: left;
+    width: 30%;
+}
+
+.paragraph{
+    margin-bottom: 10%;
+}
+
+#whoAmI {
+    overflow: hidden;
+}
+
+#subscription {
+    width: 65%;
+    margin-bottom: 50px;
+    float: right;
+}
+
+#detailInfo {
+    float: right;
+    width: 65%;
+}
+
+caption {
+    font-size: 18pt;
+    padding: 10px;
+    text-align: left;
+}
+
+table {
+    font-size: 15pt;
+    width: 100%;
+    border-collapse: collapse;
+}
+
+tr:first-child {
+    border-top: 2px solid #7E7E7E;
+}
+
+td, tr {
+    border-top: 1px dotted #AAAAAA;
+    border-bottom: 1px dotted #AAAAAA;
+    padding: 10px;
+}
+
+td:first-child {
+    /*font-weight: 500;*/
+}
+
+td:last-child {
+    color: #464646;
+}
+
+#careerAndAwards {
+    clear: both;
+}
+
+.threeDimensionTable {
+    table-layout: fixed;
+}
+
+.threeDimensionTable * > td:first-child {
+    /*color: red;*/
+}
+
+.threeDimensionTable * > td:nth-child(2) {
+    font-size: 13pt;
+    width: 50%;
+    /*color: red;*/
+}
+
+.threeDimensionTable * > td:last-child {
+    width: 15%;
+    font-size: 13pt;
+    text-align: right;
+}
+
+#careerAndAwards > div , #whatDidYouDo > div {
+    margin-bottom: 80px;
+}
+
+.whatDidYouDoTable * > td:last-child {
+    width: 80%;
+}
+
+#techStack {
+    font-size: 12pt;
+}
+
+#whoAmI {
+    position: fixed;
+    top: 20%;
+    width: 60%;
+    height: 100%;
+}
+
+#careerAndAwards {
+    position: fixed;
+    top: 120%;
+    width: 60%;
+    height: 100%;
+}
+
+#whatDidYouDo {
+    position: fixed;
+    top: 120%;
+    width: 60%;
+    height: 100%;
+}
+
+#techStack {
+    position: fixed;
+    top: 120%;
+    width: 60%;
+    height: 100%;
+}
+
+#topButton {
+    position:fixed;
+    bottom:50px;
+    right:50px;
+    cursor:pointer;
+}
+
+#upButton {
+    position:fixed;
+    top:5%;
+    right:50%;
+    cursor:pointer;
+}
+
+#downButton {
+    position:fixed;
+    bottom:5%;
+    right:50%;
+    cursor:pointer;
+}

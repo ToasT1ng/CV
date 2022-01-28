@@ -13,14 +13,23 @@ a:visited {
 
 #mainFrame {
     width: 60%;
-    margin: 4% auto;
+    margin: 5% auto;
 }
 
 #navigator {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 1%;
+    width: 20%;
+    text-align: right;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    cursor: pointer;
     font-size: 14pt;
+}
+
+#navigator a {
+    padding-left: 5% ;
+    text-decoration: none;
+    color: black;
 }
 
 h1 {
