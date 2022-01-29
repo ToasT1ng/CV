@@ -1,5 +1,5 @@
 body { overflow: hidden; }
-body * { touch-action: none; }
+/*body * { touch-action: none; }*/
 
 #whoAmI {
     position: fixed;
@@ -25,20 +25,4 @@ body * { touch-action: none; }
 #topButton {
     bottom:50px;
     right:50px;
-}
-
-#upButton {
-    top:5%;
-    right:50%;
-    z-index: 10;
-}
-
-#downButton {
-    bottom:5%;
-    right:50%;
-    z-index: 10;
-}
-
-.hideClass {
-    display: none;
 }

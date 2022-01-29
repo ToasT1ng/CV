@@ -1,69 +1,81 @@
 $(document).ready(function () {
-    var theHeight = $(window).height();
-    var pos = 1;
-    var count = $("#mainFrame > div").length;
+    let currentWindowHeight;
+    let currentDivPositionByPercent;
+    let upDivPositionByPercent;
+    let downDivPositionByPercent;
 
-    var upBool = true;
-    var downBool = true;
-    var waitTime = 1000;
-    var animateTime = 750;
+    setParams();
+    $(".upArrow").hide();
+
+    let divPosition = 1;
+    let divCount = $("#mainFrame > div").length;
+
+    let upScrollBoolean = true;
+    let downScrollBoolean = true;
+    let scrollWaitTime = 1000;
+    let animateTime = 750;
+    let fadeSpeed = 100;
 
     $( window ).resize( function() {
-        theHeight = $(window).height();
-        var currentPositionPercent = theHeight * 0.2;
-        var upPositionPercent = theHeight * -0.8;
-        var downPositionPercent = theHeight * 1.2;
-        for (var index = 1; index <= count; index++) {
-            if (index < pos) {
-                $('#mainFrame > div:nth-child(' + index + ')').animate({top: upPositionPercent}, 0);
-            } else if (index === pos) {
-                $('#mainFrame > div:nth-child(' + index + ')').animate({top: currentPositionPercent}, 0);
+        setParams();
+        for (let index = 1; index <= divCount; index++) {
+            if (index < divPosition) {
+                $('#mainFrame > div:nth-child(' + index + ')').animate({top: upDivPositionByPercent}, 0);
+            } else if (index === divPosition) {
+                $('#mainFrame > div:nth-child(' + index + ')').animate({top: currentDivPositionByPercent}, 0);
             } else {
-                $('#mainFrame > div:nth-child(' + index + ')').animate({top: downPositionPercent}, 0);
+                $('#mainFrame > div:nth-child(' + index + ')').animate({top: downDivPositionByPercent}, 0);
             }
         }
     });
 
+    function setParams() {
+        currentWindowHeight = $(window).height();
+        currentDivPositionByPercent = currentWindowHeight * 0.2;
+        upDivPositionByPercent = currentWindowHeight * -0.8;
+        downDivPositionByPercent = currentWindowHeight * 1.2;
+    }
 
-    $("html").on('mousewheel',function(e){
-        var wheel = e.originalEvent.wheelDelta;
-        if(wheel > 0){
-            if (upBool) {
+
+    $("html").on('mousewheel',function(wheelScroll){
+        var wheelPos = wheelScroll.originalEvent.wheelDelta;
+        if(wheelPos > 0){
+            if (upScrollBoolean) {
                 upButtonFunction.call($("#upButton"));
             }
 
         } else {
-            if (downBool) {
+            if (downScrollBoolean) {
                 downButtonFunction.call($("#downButton"));
             }
         }
     });
 
     function upButtonFunction() {
-        upBool = false;
+        upScrollBoolean = false;
         goUp();
         setTimeout($.proxy(function () {
-            upBool = true;
-        }, this), waitTime);
+            upScrollBoolean = true;
+        }, this), scrollWaitTime);
     }
 
     $("#upButton").on("click", function() {
-        if (upBool) {
+        if (upScrollBoolean) {
             upButtonFunction.call(this);
         }
 
     });
 
     function downButtonFunction() {
-        downBool = false;
+        downScrollBoolean = false;
         goDown();
         setTimeout($.proxy(function () {
-            downBool = true;
-        }, this), waitTime);
+            downScrollBoolean = true;
+        }, this), scrollWaitTime);
     }
 
     $("#downButton").on("click", function () {
-        if (downBool) {
+        if (downScrollBoolean) {
             downButtonFunction.call(this);
         }
     });
@@ -73,37 +85,47 @@ $(document).ready(function () {
     });
 
     function goDown() {
-        if (pos < count) {
-            $('#mainFrame > div:nth-child('+pos+')').animate({top: "-=" + theHeight}, animateTime);
-            $('#mainFrame > div:nth-child('+pos+')').fadeOut(100);
-            pos++;
-            $('#mainFrame > div:nth-child('+pos+')').fadeIn(100);
-            $('#mainFrame > div:nth-child('+pos+')').animate({top: "-=" + theHeight}, animateTime);
+        if (divPosition < divCount) {
+            $(".upArrow").show();
+            $('#mainFrame > div:nth-child('+divPosition+')').animate({top: "-=" + currentWindowHeight}, animateTime);
+            $('#mainFrame > div:nth-child('+divPosition+')').fadeOut(fadeSpeed);
+            divPosition++;
+            $('#mainFrame > div:nth-child('+divPosition+')').fadeIn(fadeSpeed);
+            $('#mainFrame > div:nth-child('+divPosition+')').animate({top: "-=" + currentWindowHeight}, animateTime);
+
+            if (divPosition === divCount) {
+                $(".downArrow").hide();
+            }
         }
     }
 
     function goUp() {
-        if (pos > 1) {
-            $('#mainFrame > div:nth-child('+pos+')').animate({top: "+=" + theHeight}, animateTime);
-            $('#mainFrame > div:nth-child('+pos+')').fadeOut(100);
-            pos--;
-            $('#mainFrame > div:nth-child('+pos+')').fadeIn(100);
-            $('#mainFrame > div:nth-child('+pos+')').animate({top: "+=" + theHeight}, animateTime);
+        if (divPosition > 1) {
+            $(".downArrow").show();
+            $('#mainFrame > div:nth-child('+divPosition+')').animate({top: "+=" + currentWindowHeight}, animateTime);
+            $('#mainFrame > div:nth-child('+divPosition+')').fadeOut(fadeSpeed);
+            divPosition--;
+            $('#mainFrame > div:nth-child('+divPosition+')').fadeIn(fadeSpeed);
+            $('#mainFrame > div:nth-child('+divPosition+')').animate({top: "+=" + currentWindowHeight}, animateTime);
+
+            if (divPosition === 1) {
+                $(".upArrow").hide();
+            }
         }
     }
 
     function goToTop() {
-        theHeight = $(window).height();
-        var currentPositionPercent = theHeight * 0.2;
-        var downPositionPercent = theHeight * 1.2;
-        for (var index = 1; index <= count; index++) {
+        $("#upArrow").hide();
+        for (let index = 1; index <= divCount; index++) {
             if (index === 1) {
-                $('#mainFrame > div:nth-child(' + index + ')').animate({top: currentPositionPercent}, 0);
+                $('#mainFrame > div:nth-child('+index+')').fadeIn(0);
+                $('#mainFrame > div:nth-child(' + index + ')').animate({top: currentDivPositionByPercent}, 0);
             } else {
-                $('#mainFrame > div:nth-child(' + index + ')').animate({top: downPositionPercent}, 0);
+                $('#mainFrame > div:nth-child('+index+')').fadeOut(0);
+                $('#mainFrame > div:nth-child(' + index + ')').animate({top: downDivPositionByPercent}, 0);
             }
         }
-        pos = 1;
+        divPosition = 1;
     }
 });
 

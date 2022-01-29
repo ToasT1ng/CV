@@ -3,6 +3,7 @@
 <head>
     <link th:href="@{/css/commonView.css}" rel="stylesheet" />
     <link th:href="@{/css/slideView.css}" rel="stylesheet" />
+    <link th:href="@{/css/arrow.css}" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -12,15 +13,23 @@
     <title>Title</title>
 </head>
 <body>
+    <div id="scrollArrow">
+        <div class="downArrow">
+            <span></span>
+            <span></span>
+        </div>
+        <div class="upArrow">
+            <span></span>
+            <span></span>
+        </div>
+    </div>
     <div id="navigator">
         <a th:href="@{/}">Slide View</a>
         <a th:href="@{/common}">Common View</a>
         <a>Settings</a>
     </div>
     <div id="buttonDiv">
-        <a id="upButton">∧ Button</a>
         <a id="topButton">▲</a>
-        <a id="downButton">∨ Button</a>
     </div>
     <div id="mainFrame">
         <div class="paragraph" id="whoAmI">
