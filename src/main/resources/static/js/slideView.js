@@ -115,7 +115,7 @@ $(document).ready(function () {
     }
 
     function goToTop() {
-        $("#upArrow").hide();
+        $(".upArrow").hide();
         for (let index = 1; index <= divCount; index++) {
             if (index === 1) {
                 $('#mainFrame > div:nth-child('+index+')').fadeIn(0);

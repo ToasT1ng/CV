@@ -38,30 +38,14 @@
                 <img id="picture" th:src="@{/picture/nthing_profile.jpeg}" alt="프로필사진">
             </div>
             <div id="subscription">
-                <p>안녕하세요, 주니어 백엔드 개발자 성진아 입니다. 현재 (주) 엔씽에 재직하고 있습니다.</p>
+                <p th:text="${greeting.description}"></p>
             </div>
             <div id="detailInfo">
                 <table>
                     <caption>More Information</caption>
-                    <tr>
-                        <td>Name</td>
-                        <td>Jinah Sung</td>
-                    </tr>
-                    <tr>
-                        <td>Age</td>
-                        <td>1997.11.19 ~ (만24세)</td>
-                    </tr>
-                    <tr>
-                        <td>Contact</td>
-                        <td>jrainboww9@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>Git</td>
-                        <td><a href="https://github.com/ToasT1ng/">GitHub</a></td>
-                    </tr>
-                    <tr>
-                        <td>Blog</td>
-                        <td><a href="https://toast1ng.tistory.com/">Tistory Blog</a></td>
+                    <tr th:each="detailInfo : ${detailInfos}">
+                        <td th:text="${detailInfo.category}"></td>
+                        <td th:utext="${detailInfo.description}"></td>
                     </tr>
                 </table>
             </div>
