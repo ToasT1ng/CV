@@ -1,15 +1,24 @@
 package info.toast1ng.cv.dao;
 
 import info.toast1ng.cv.dto.TechStackDto;
+import info.toast1ng.cv.entities.TechStack;
+import info.toast1ng.cv.repository.TechStackRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 @Repository
 public class TechStackDao {
+    @Autowired
+    private TechStackRepository techStackRepository;
+
     public TechStackDto getSingleTechStack() {
-        return TechStackDto.builder()
-                .description("<p>이 Page 는 Spring Boot & MySQL & AWS EC2 를 사용해 만들어졌습니다. PC 화면에 최적화 되어있어 모바일에서는 조금 불편할 수 있습니다.</p>\n" +
-                        "            <p>소스코드 : </p>\n" +
-                        "            <p>만든 과정 기록 : </p>")
-                .build();
+        List<TechStack> entities = techStackRepository.findAll();
+        if (entities.size() > 0) {
+            return entities.get(0).toDto();
+        } else {
+            return null;
+        }
     }
 }

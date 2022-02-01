@@ -1,6 +1,7 @@
 package info.toast1ng.cv.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import info.toast1ng.cv.entities.EducationHistory;
 import info.toast1ng.cv.util.CustomDateUtil;
 import lombok.Builder;
 import lombok.Data;
@@ -12,7 +13,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Data
 public class EducationHistoryDto {
-    private long educationalId;
+    private long educationId;
     private String schoolName;
     private String description;
 
@@ -25,8 +26,8 @@ public class EducationHistoryDto {
     private String endDateString;
 
     @Builder(builderMethodName = "dateBuilder")
-    public EducationHistoryDto(long educationalId, String schoolName, String description, Date startDate, Date endDate) {
-        this.educationalId = educationalId;
+    public EducationHistoryDto(long educationId, String schoolName, String description, Date startDate, Date endDate) {
+        this.educationId = educationId;
         this.schoolName = schoolName;
         this.description = description;
         this.startDate = startDate;
@@ -36,8 +37,8 @@ public class EducationHistoryDto {
     }
 
     @Builder(builderMethodName = "dateStringBuilder")
-    public EducationHistoryDto(long educationalId, String schoolName, String description, String startDateString, String endDateString) {
-        this.educationalId = educationalId;
+    public EducationHistoryDto(long educationId, String schoolName, String description, String startDateString, String endDateString) {
+        this.educationId = educationId;
         this.schoolName = schoolName;
         this.description = description;
         this.startDateString = startDateString;
@@ -55,4 +56,13 @@ public class EducationHistoryDto {
     }
 
 
+    public EducationHistory toEntity() {
+        return EducationHistory.dateBuilder()
+                .educationId(educationId)
+                .schoolName(schoolName)
+                .description(description)
+                .startDate(startDate)
+                .endDate(endDate)
+                .build();
+    }
 }
