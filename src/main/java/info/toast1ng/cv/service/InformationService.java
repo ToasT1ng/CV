@@ -9,8 +9,12 @@ import java.util.List;
 
 @Service
 public class InformationService {
-    @Autowired
     private InformationDao informationDao;
+
+    @Autowired
+    public InformationService(InformationDao informationDao) {
+        this.informationDao = informationDao;
+    }
 
     public List<InformationDto> getInformations() {
         return informationDao.getInformations();

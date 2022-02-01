@@ -41,40 +41,35 @@
         <div id="educationalHistory">
             <table class="threeDimensionTable">
                 <caption>Educational History</caption>
-                <tr>
-                    <td>한양대학교 에리카캠퍼스</td>
-                    <td>소프트웨어학과 컴퓨터전공 ( 3.77 / 4.5 )</td>
-                    <td>2016.03 ~ 2021.08</td>
-                </tr>
-                <tr>
-                    <td>신도림고등학교</td>
-                    <td>인문계</td>
-                    <td>2013.03 ~ 2016.02</td>
+                <tr th:each="educationHistory : ${careerAndAwards.get('educationHistory')}">
+                    <td th:text="${educationHistory.schoolName}"></td>
+                    <td th:utext="${educationHistory.description}"></td>
+                    <td><span th:utext="${educationHistory.startDateString}"></span> ~ <span th:utext="${educationHistory.endDateString}"></span></td>
                 </tr>
             </table>
         </div>
         <div id="awards">
             <table class="threeDimensionTable">
                 <caption>Awards</caption>
-                <tr>
-                    <td>2019 Erica Software-Up 창업아이디어 톤</td>
-                    <td>Thir-Key : 안전과 프라이버시를 보장하는, 키 없는 IoT 도어락 시스템</td>
-                    <td>우수상</td>
-                </tr>
-                <tr>
-                    <td>2020 안산 메이커 창업 페스티벌</td>
-                    <td>FingerPrint : Online For Offline 클라우드 프린팅 서비스</td>
-                    <td>전시우수상</td>
+                <tr th:each="awards : ${careerAndAwards.get('awards')}">
+                    <td th:text="${awards.awardName}"></td>
+                    <td th:utext="${awards.description}"></td>
+                    <td th:utext="${awards.award}"></td>
                 </tr>
             </table>
         </div>
         <div id="career" >
             <table class="threeDimensionTable">
                 <caption>Careers</caption>
-                <tr>
-                    <td>(주) 엔씽</td>
-                    <td>S/W Backend Engineer</td>
-                    <td>2021.03 ~ &nbsp;</td>
+                <tr th:each="career : ${careerAndAwards.get('career')}">
+                    <td th:text="${career.companyName}"></td>
+                    <td th:utext="${career.description}"></td>
+                    <span th:if="${career.currentWorkOrNot}">
+                        <td><span th:utext="${career.startDateString}"></span> ~ </td>
+                    </span>
+                    <span th:unless="${career.currentWorkOrNot}">
+                        <td><span th:utext="${career.startDateString}"></span> ~ <span th:utext="${career.endDateString}"></span></td>
+                    </span>
                 </tr>
             </table>
         </div>
@@ -82,25 +77,12 @@
 
     <div class="paragraph" id="whatDidYouDo">
         <h1>What did you do?</h1>
-        <div id="university" >
+        <div th:each="thingsDoneMap : ${thingsDone}">
             <table class="whatDidYouDoTable">
-                <caption>학부생 시절</caption>
-                <tr>
-                    <td>창업동아리</td>
-                    <td>프로젝트<br>수상</td>
-                </tr>
-                <tr>
-                    <td>졸업작품</td>
-                    <td>음식 ㄴㄹㅁㄹㄴㄹ<br>Spring Boot</td>
-                </tr>
-            </table>
-        </div>
-        <div>
-            <table class="whatDidYouDoTable">
-                <caption>재직 후</caption>
-                <tr>
-                    <td>Backend Engineer</td>
-                    <td>뭐했는지 말해~~</td>
+                <caption th:text="${thingsDoneMap.key}"></caption>
+                <tr th:each="thingsDoneEach : ${thingsDoneMap.value}">
+                    <td th:utext="${thingsDoneEach.category}"></td>
+                    <td th:utext="${thingsDoneEach.description}"></td>
                 </tr>
             </table>
         </div>
@@ -108,9 +90,7 @@
 
     <div class="paragraph" id="techStack">
         <h1>Tech Stack</h1>
-        <p>이 Page 는 Spring Boot & MySQL & AWS EC2 를 사용해 만들어졌습니다.</p>
-        <p>소스코드 : </p>
-        <p>만든 과정 기록 : </p>
+        <span th:utext="${techStack.description}"></span>
     </div>
 </div>
 </body>

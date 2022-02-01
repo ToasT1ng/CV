@@ -3,16 +3,14 @@ body { overflow: hidden; }
 
 #whoAmI {
     position: fixed;
-    top: 20%;
+    top: 10%;
     width: 60%;
-    /*height: 100%;*/
 }
 
 #careerAndAwards, #whatDidYouDo, #techStack {
     position: fixed;
-    top: 120%;
+    top: 110%;
     width: 60%;
-    /*height: 100%;*/
 }
 
 #buttonDiv a {

@@ -13,13 +13,14 @@ public class InformationDao {
         result.add(InformationDto.builder()
                 .informationId(1L)
                 .category("Name")
-                .description("Jinah Sung")
+                .description("Jane Sung")
+//                .description("Jinah Sung")
                 .greetingOrNot(false)
                 .build());
         result.add(InformationDto.builder()
                 .informationId(2L)
                 .category("Age")
-                .description("1997.11.19 ~ (만24세)")
+                .description("1997.11 ~ (만24세)")
                 .greetingOrNot(false)
                 .build());
         result.add(InformationDto.builder()
@@ -48,7 +49,8 @@ public class InformationDao {
         return InformationDto.builder()
                 .informationId(0L)
                 .category("Greeting")
-                .description("안녕하세요, 주니어 백엔드 개발자 성진아 입니다. 현재 (주) 엔씽에 재직하고 있습니다.")
+                .description("안녕하세요, 주니어 백엔드 개발자 입니다. 현재 스타트업 회사에 재직하고 있습니다.")
+//                .description("안녕하세요, 주니어 백엔드 개발자 성진아 입니다. 현재 (주) 엔씽에 재직하고 있습니다.")
                 .greetingOrNot(true)
                 .build();
     }

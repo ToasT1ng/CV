@@ -31,9 +31,9 @@ $(document).ready(function () {
 
     function setParams() {
         currentWindowHeight = $(window).height();
-        currentDivPositionByPercent = currentWindowHeight * 0.2;
-        upDivPositionByPercent = currentWindowHeight * -0.8;
-        downDivPositionByPercent = currentWindowHeight * 1.2;
+        currentDivPositionByPercent = currentWindowHeight * 0.1;
+        upDivPositionByPercent = currentWindowHeight * -0.9;
+        downDivPositionByPercent = currentWindowHeight * 1.1;
     }
 
 
