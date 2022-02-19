@@ -10,7 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class MvcController {
+public class ViewController {
     @Autowired
     private InformationService informationService;
 
@@ -43,10 +43,5 @@ public class MvcController {
         model.addAttribute("techStack", techStackService.getSingleTechStack());
 
         return "slideView";
-    }
-
-    @GetMapping("/settings")
-    public String settings(Model mode) {
-        return "settings";
     }
 }

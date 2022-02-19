@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
-    <link th:href="@{/css/commonView.css}" rel="stylesheet" />
+    <link th:href="@{/css/commonView.css}" rel="stylesheet"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<!--    <script type="text/javascript" th:src="@{/js/slideView.js}"></script>-->
+    <!--    <script type="text/javascript" th:src="@{/js/slideView.js}"></script>-->
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
@@ -17,25 +17,6 @@
     <a th:href="@{/settings/index}">Settings</a>
 </div>
 <div id="mainFrame">
-    <div class="paragraph" id="whoAmI">
-        <h1>Who Am I?</h1>
-        <div>
-            <img id="picture" th:src="@{/picture/nthing_profile.jpeg}" alt="프로필사진">
-        </div>
-        <div id="subscription">
-            <p th:text="${greeting.description}"></p>
-        </div>
-        <div id="detailInfo">
-            <table>
-                <caption>More Information</caption>
-                <tr th:each="detailInfo : ${detailInfos}">
-                    <td th:text="${detailInfo.category}"></td>
-                    <td th:utext="${detailInfo.description}"></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
     <div class="paragraph" id="careerAndAwards">
         <h1>Career & Awards</h1>
         <div id="educationalHistory">
@@ -66,26 +47,21 @@
                     <td th:utext="${career.description}"></td>
                     <td th:utext="${career.dateInformation}"></td>
                 </tr>
+                <form>
+                    <tr>
+                        <td><input type="text" name="text" size="20" style="width:100%;"></td>
+                        <td><input type="text" name="text" size="20" style="width:100%;"></td>
+                        <td><input type="text" name="text" size="20" style="width:100%;"></td>
+                    </tr>
+                </form>
             </table>
+            <button>추가하기</button>
         </div>
     </div>
 
-    <div class="paragraph" id="whatDidYouDo">
-        <h1>What did you do?</h1>
-        <div th:each="thingsDoneMap : ${thingsDone}">
-            <table class="whatDidYouDoTable">
-                <caption th:text="${thingsDoneMap.key}"></caption>
-                <tr th:each="thingsDoneEach : ${thingsDoneMap.value}">
-                    <td th:utext="${thingsDoneEach.category}"></td>
-                    <td th:utext="${thingsDoneEach.description}"></td>
-                </tr>
-            </table>
-        </div>
-    </div>
-
-    <div class="paragraph" id="techStack">
-        <h1>Tech Stack</h1>
-        <span th:utext="${techStack.description}"></span>
+    <div class="paragraph">
+        <button>뒤로가기</button>
+        <button>수정하기</button>
     </div>
 </div>
 </body>

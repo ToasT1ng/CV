@@ -1,0 +1,25 @@
+<configuration debug="true" scan="true">
+    <include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+    <include resource="org/springframework/boot/logging/logback/console-appender.xml"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%5level) %magenta(${PID:-}) --- [%15(%thread)] %cyan(%logger{5}) : %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>log/cv.log</file>
+        <encoder>
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %5level ${PID:-} --- [%15(%thread)] %logger{5} : %msg%n</Pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>log/%d{yyyyMMdd}.gz</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+    <root level="info">
+        <appender-ref ref="STDOUT"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>

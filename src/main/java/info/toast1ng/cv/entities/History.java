@@ -1,14 +1,12 @@
 package info.toast1ng.cv.entities;
 
-import info.toast1ng.cv.dto.AwardsDto;
-import info.toast1ng.cv.dto.CareerDto;
-import info.toast1ng.cv.dto.HistoryType;
-import info.toast1ng.cv.dto.EducationHistoryDto;
+import info.toast1ng.cv.dto.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @NoArgsConstructor
 @Getter
@@ -28,11 +26,18 @@ public class History {
 
     @Builder
     public History(long historyId, HistoryType type, String name, String description, String moreDescription) {
-        this.historyId = historyId;
+        setHistoryId(historyId);
         this.type = type;
         this.name = name;
         this.description = description;
         this.moreDescription = moreDescription;
+    }
+
+    public void setHistoryId(long historyId) {
+        if (historyId == 0) {
+            historyId = new Date().getTime();
+        }
+        this.historyId = historyId;
     }
 
     public CareerDto toCareerDto() {
@@ -59,6 +64,16 @@ public class History {
                 .awardName(name)
                 .description(description)
                 .award(moreDescription)
+                .build();
+    }
+
+    public HistoryDto toDto() {
+        return HistoryDto.builder()
+                .historyId(historyId)
+                .type(type)
+                .name(name)
+                .description(description)
+                .moreDescription(moreDescription)
                 .build();
     }
 }

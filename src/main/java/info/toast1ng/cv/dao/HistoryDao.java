@@ -1,9 +1,6 @@
 package info.toast1ng.cv.dao;
 
-import info.toast1ng.cv.dto.AwardsDto;
-import info.toast1ng.cv.dto.CareerDto;
-import info.toast1ng.cv.dto.HistoryType;
-import info.toast1ng.cv.dto.EducationHistoryDto;
+import info.toast1ng.cv.dto.*;
 import info.toast1ng.cv.entities.History;
 import info.toast1ng.cv.repository.HistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -45,5 +42,27 @@ public class HistoryDao {
         }
 
         return dtos;
+    }
+
+    public HistoryDto setHistory(HistoryDto history) {
+        return repository.save(history.toEntity()).toDto();
+    }
+
+    public List<HistoryDto> setHistories(List<HistoryDto> histories) {
+        List<History> entities = new ArrayList<>();
+        for (HistoryDto dto : histories) {
+            entities.add(dto.toEntity());
+        }
+        List<HistoryDto> results = new ArrayList<>();
+        List<History> resultEntities = repository.saveAll(entities);
+        for (History entity : resultEntities) {
+            results.add(entity.toDto());
+        }
+        return results;
+    }
+
+    public long deleteHistory(long id) {
+        repository.deleteById(id);
+        return id;
     }
 }

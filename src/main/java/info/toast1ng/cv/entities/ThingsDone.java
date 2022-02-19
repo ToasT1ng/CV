@@ -5,9 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @NoArgsConstructor
 @Getter
@@ -22,10 +21,17 @@ public class ThingsDone {
 
     @Builder
     public ThingsDone(long thingsDoneId, String era, String category, String description) {
-        this.thingsDoneId = thingsDoneId;
+        setThingsDoneId(thingsDoneId);
         this.era = era;
         this.category = category;
         this.description = description;
+    }
+
+    public void setThingsDoneId(long thingsDoneId) {
+        if (thingsDoneId == 0) {
+            thingsDoneId = new Date().getTime();
+        }
+        this.thingsDoneId = thingsDoneId;
     }
 
     public ThingsDoneDto toDto() {

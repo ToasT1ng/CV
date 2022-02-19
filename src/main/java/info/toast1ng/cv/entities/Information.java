@@ -5,9 +5,8 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.Date;
 
 @NoArgsConstructor
 @Getter
@@ -24,7 +23,7 @@ public class Information {
 
     @Builder
     public Information(long informationId, String category, String description, boolean greetingOrNot) {
-        this.informationId = informationId;
+        setInformationId(informationId);
         this.category = category;
         this.description = description;
         this.greetingOrNot = greetingOrNot;
@@ -37,5 +36,12 @@ public class Information {
                 .description(description)
                 .greetingOrNot(greetingOrNot)
                 .build();
+    }
+
+    public void setInformationId(long informationId) {
+        if (informationId == 0) {
+            informationId = new Date().getTime();
+        }
+        this.informationId = informationId;
     }
 }
