@@ -1,6 +1,6 @@
 package info.toast1ng.cv.dto;
 
-import info.toast1ng.cv.entities.Awards;
+import info.toast1ng.cv.entities.History;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,12 +21,13 @@ public class AwardsDto {
         this.award = award;
     }
 
-    public Awards toEntity() {
-        return Awards.builder()
-                .awardsId(awardsId)
-                .awardName(awardName)
+    public History toEntity() {
+        return History.builder()
+                .historyId(awardsId)
+                .type(HistoryType.AWARDS)
+                .name(awardName)
                 .description(description)
-                .award(award)
+                .moreDescription(award)
                 .build();
     }
 }

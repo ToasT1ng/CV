@@ -59,7 +59,7 @@
                     <tr th:each="educationHistory : ${careerAndAwards.get('educationHistory')}">
                         <td th:text="${educationHistory.schoolName}"></td>
                         <td th:utext="${educationHistory.description}"></td>
-                        <td><span th:utext="${educationHistory.startDateString}"></span> ~ <span th:utext="${educationHistory.endDateString}"></span></td>
+                        <td th:utext="${educationHistory.dateInformation}"></td>
                     </tr>
                 </table>
             </div>
@@ -79,12 +79,7 @@
                     <tr th:each="career : ${careerAndAwards.get('career')}">
                         <td th:text="${career.companyName}"></td>
                         <td th:utext="${career.description}"></td>
-                        <span th:if="${career.currentWorkOrNot}">
-                        <td><span th:utext="${career.startDateString}"></span> ~ </td>
-                    </span>
-                        <span th:unless="${career.currentWorkOrNot}">
-                        <td><span th:utext="${career.startDateString}"></span> ~ <span th:utext="${career.endDateString}"></span></td>
-                    </span>
+                        <td th:utext="${career.dateInformation}"></td>
                     </tr>
                 </table>
             </div>
