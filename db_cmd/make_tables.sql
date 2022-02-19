@@ -8,27 +8,17 @@ Create table `awards`
     PRIMARY KEY (`award_id`)
 );
 
--- Drop table if exists `career`;
-Create table `career`
+-- Drop table if exists `career_and_education_history`;
+Create table `career_and_education_history`
 (
-    `career_id`    int,
-    `company_name` varchar(255),
-    `description`  varchar(255),
-    `start_date`   datetime,
-    `end_date`     datetime,
+    `history_id`          int,
+    `type`                varchar(255),
+    `name`                varchar(255),
+    `description`         varchar(255),
+    `start_date`          datetime,
+    `end_date`            datetime,
     `current_work_or_not` tinyint,
-    PRIMARY KEY (`career_id`)
-);
-
--- Drop table if exists `education_history`;
-Create table `education_history`
-(
-    `education_id` int,
-    `school_name`  varchar(255),
-    `description`  varchar(255),
-    `start_date`   datetime,
-    `end_date`     datetime,
-    PRIMARY KEY (`education_id`)
+    PRIMARY KEY (`history_id`)
 );
 
 -- Drop table if exists `information`;

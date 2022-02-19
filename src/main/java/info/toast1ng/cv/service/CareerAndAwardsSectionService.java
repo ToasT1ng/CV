@@ -7,21 +7,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Repository
-public class CareerAndAwardsService {
+public class CareerAndAwardsSectionService {
     @Autowired
-    private EducationHistoryService educationHistoryService;
+    private CareerAndEducationService careerAndEducationHistoryService;
 
     @Autowired
     private AwardsService awardsService;
 
-    @Autowired
-    private CareerService careerService;
 
     public Map<String, Object> getEveryInformation() {
         Map<String, Object> returnMap = new HashMap<>();
-        returnMap.put("educationHistory", educationHistoryService.getEducationHistories());
+        returnMap.put("educationHistory", careerAndEducationHistoryService.getEducationHistories());
         returnMap.put("awards", awardsService.getAwards());
-        returnMap.put("career", careerService.getCareers());
+        returnMap.put("career", careerAndEducationHistoryService.getCareers());
         return returnMap;
     }
 }

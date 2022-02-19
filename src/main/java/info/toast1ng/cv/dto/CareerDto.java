@@ -1,7 +1,7 @@
 package info.toast1ng.cv.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import info.toast1ng.cv.entities.Career;
+import info.toast1ng.cv.entities.CareerAndEducationHistory;
 import info.toast1ng.cv.util.CustomDateUtil;
 import lombok.Builder;
 import lombok.Data;
@@ -57,10 +57,11 @@ public class CareerDto {
         setEndDateString(CustomDateUtil.getDateString(calendar));
     }
 
-    public Career toEntity() {
-        return Career.dateBuilder()
-                .careerId(careerId)
-                .companyName(companyName)
+    public CareerAndEducationHistory toEntity() {
+        return CareerAndEducationHistory.dateBuilder()
+                .historyId(careerId)
+                .type(CareerOrEducationType.CAREER)
+                .name(companyName)
                 .description(description)
                 .startDate(startDate)
                 .endDate(endDate)

@@ -1,7 +1,7 @@
 package info.toast1ng.cv.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import info.toast1ng.cv.entities.EducationHistory;
+import info.toast1ng.cv.entities.CareerAndEducationHistory;
 import info.toast1ng.cv.util.CustomDateUtil;
 import lombok.Builder;
 import lombok.Data;
@@ -56,10 +56,11 @@ public class EducationHistoryDto {
     }
 
 
-    public EducationHistory toEntity() {
-        return EducationHistory.dateBuilder()
-                .educationId(educationId)
-                .schoolName(schoolName)
+    public CareerAndEducationHistory toEntity() {
+        return CareerAndEducationHistory.dateBuilder()
+                .historyId(educationId)
+                .type(CareerOrEducationType.EDUCATION_HISTORY)
+                .name(schoolName)
                 .description(description)
                 .startDate(startDate)
                 .endDate(endDate)
