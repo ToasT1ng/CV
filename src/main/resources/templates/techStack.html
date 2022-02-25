@@ -6,18 +6,22 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!--    <script type="text/javascript" th:src="@{/js/slideView.js}"></script>-->
+    <script type="text/javascript" th:src="@{/js/settings.js}"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
 <th:block th:replace="fragment/header :: headerFragment"></th:block>
 <div id="mainFrame">
-    <div id="settingsSelection">
-        <a th:href="@{/settings/whoAmI}">Who Am I</a>
-        <a th:href="@{/settings/history}">History</a>
-        <a th:href="@{/settings/whatDidYouDo}">What Did You Do</a>
-        <a th:href="@{/settings/techStack}">TechStack</a>
+    <div class="paragraph" id="techStack">
+        <h1>Tech Stack</h1>
+        <br/>
+        <textarea th:text="${techStack.description}" id="techStackTextArea" rows="20" cols="100"></textarea>
+    </div>
+
+    <div class="paragraph">
+        <button id="goBack">뒤로가기</button>
+        <button id="techStackEditButton">수정하기</button>
     </div>
 </div>
 </body>

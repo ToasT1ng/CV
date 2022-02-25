@@ -1,31 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <link th:href="@{/css/commonView.css}" rel="stylesheet"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!--    <script type="text/javascript" th:src="@{/js/slideView.js}"></script>-->
+    <script type="text/javascript" th:src="@{/js/settings.js}"></script>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-<div id="navigator">
-    <a th:href="@{/slide}">Slide View</a>
-    <a th:href="@{/}">Common View</a>
-    <a th:href="@{/settings/index}">Settings</a>
-</div>
+<th:block th:replace="fragment/header :: headerFragment"></th:block>
 <div id="mainFrame">
     <div class="paragraph" id="careerAndAwards">
-        <h1>Career & Awards</h1>
+        <h1>History</h1>
         <div id="educationalHistory">
             <table class="threeDimensionTable">
                 <caption>Educational History</caption>
                 <tr th:each="educationHistory : ${careerAndAwards.get('educationHistory')}">
-                    <td th:text="${educationHistory.schoolName}"></td>
-                    <td th:utext="${educationHistory.description}"></td>
-                    <td th:utext="${educationHistory.dateInformation}"></td>
+                    <input type="hidden" th:id="|historyId_${educationHistory.educationId}|"
+                           th:value="${educationHistory.educationId}">
+                    <input type="hidden" th:id="|type_${educationHistory.educationId}|"
+                           th:value="EDUCATION_HISTORY">
+                    <td><input th:id="|name_${educationHistory.schoolName}|"
+                               th:value="${educationHistory.schoolName}"
+                               type="text" name="text" size="20" style="width:100%;"></td>
+                    <td><input th:id="|description_${educationHistory.description}|"
+                               th:value="${educationHistory.description}"
+                               type="text" name="text" size="20" style="width:100%;"></td>
+                    <td><input th:id="|moreDescription_${educationHistory.dateInformation}|"
+                               th:value="${educationHistory.dateInformation}"
+                               type="text" name="text" size="20" style="width:100%;"></td>
                 </tr>
             </table>
         </div>
@@ -33,19 +39,39 @@
             <table class="threeDimensionTable">
                 <caption>Awards</caption>
                 <tr th:each="awards : ${careerAndAwards.get('awards')}">
-                    <td th:text="${awards.awardName}"></td>
-                    <td th:utext="${awards.description}"></td>
-                    <td th:utext="${awards.award}"></td>
+                    <input type="hidden" th:id="|historyId_${awards.awardsId}|"
+                           th:value="${awards.awardsId}">
+                    <input type="hidden" th:id="|type_${awards.awardsId}|"
+                           th:value="AWARDS">
+                    <td><input th:id="|name_${awards.awardName}|"
+                               th:value="${awards.awardName}"
+                               type="text" name="text" size="20" style="width:100%;"></td>
+                    <td><input th:id="|description_${awards.description}|"
+                               th:value="${awards.description}"
+                               type="text" name="text" size="20" style="width:100%;"></td>
+                    <td><input th:id="|moreDescription_${awards.award}|"
+                               th:value="${awards.award}"
+                               type="text" name="text" size="20" style="width:100%;"></td>
                 </tr>
             </table>
         </div>
-        <div id="career" >
+        <div id="career">
             <table class="threeDimensionTable">
                 <caption>Careers</caption>
                 <tr th:each="career : ${careerAndAwards.get('career')}">
-                    <td th:text="${career.companyName}"></td>
-                    <td th:utext="${career.description}"></td>
-                    <td th:utext="${career.dateInformation}"></td>
+                    <input type="hidden" th:id="|historyId_${career.careerId}|"
+                           th:value="${career.careerId}">
+                    <input type="hidden" th:id="|type_${career.careerId}|"
+                           th:value="CAREER">
+                    <td><input th:id="|name_${career.companyName}|"
+                               th:value="${career.companyName}"
+                               type="text" name="text" size="20" style="width:100%;"></td>
+                    <td><input th:id="|description_${career.description}|"
+                               th:value="${career.description}"
+                               type="text" name="text" size="20" style="width:100%;"></td>
+                    <td><input th:id="|moreDescription_${career.dateInformation}|"
+                               th:value="${career.dateInformation}"
+                               type="text" name="text" size="20" style="width:100%;"></td>
                 </tr>
                 <form>
                     <tr>
@@ -60,8 +86,8 @@
     </div>
 
     <div class="paragraph">
-        <button>뒤로가기</button>
-        <button>수정하기</button>
+        <button id="goBack">뒤로가기</button>
+        <button id="careerAndAwardsButton">수정하기</button>
     </div>
 </div>
 </body>

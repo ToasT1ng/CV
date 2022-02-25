@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <link th:href="@{/css/commonView.css}" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/settings.js}"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:replace="fragment/header :: headerFragment"></th:block>
+<div id="mainFrame">
+    <div class="paragraph" id="whoAmI">
+        <h1>Who Am I?</h1>
+        <div>
+            <img id="picture" th:src="@{/picture/nthing_profile.jpeg}" alt="프로필사진">
+        </div>
+        <div id="subscription">
+            <p th:text="${greeting.description}"></p>
+        </div>
+        <div id="detailInfo">
+            <table>
+                <caption>More Information</caption>
+                <tr th:each="detailInfo : ${detailInfos}">
+                    <input type="hidden" th:id="|informationId_${detailInfo.informationId}|" th:value="${detailInfo.informationId}">
+                    <td><input th:id="|category_${detailInfo.informationId}|" th:value="${detailInfo.category}" type="text" name="text" size="20" style="width:100%;"></td>
+                    <td><input th:id="|description_${detailInfo.informationId}|" th:value="${detailInfo.description}" type="text" name="text" size="20" style="width:100%;"></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="text" size="20" style="width:100%;"></td>
+                    <td><input type="text" name="text" size="20" style="width:100%;"></td>
+                </tr>
+            </table>
+            <button>추가하기</button>
+        </div>
+    </div>
+
+    <div class="paragraph">
+        <button id="goBack">뒤로가기</button>
+        <button id="whoAmIEditButton">수정하기</button>
+    </div>
+</div>
+</body>
+</html>

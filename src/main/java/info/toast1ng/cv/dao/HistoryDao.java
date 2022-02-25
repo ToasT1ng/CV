@@ -3,7 +3,6 @@ package info.toast1ng.cv.dao;
 import info.toast1ng.cv.dto.*;
 import info.toast1ng.cv.entities.History;
 import info.toast1ng.cv.repository.HistoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -11,8 +10,20 @@ import java.util.List;
 
 @Repository
 public class HistoryDao {
-    @Autowired
-    private HistoryRepository repository;
+    private final HistoryRepository repository;
+
+    public HistoryDao(HistoryRepository repository) {
+        this.repository = repository;
+    }
+
+    public List<HistoryDto> getHistories() {
+        List<History> entities = repository.findAll();
+        List<HistoryDto> dtos = new ArrayList<>();
+        for (History entity : entities) {
+            dtos.add(entity.toDto());
+        }
+        return dtos;
+    }
 
     public List<CareerDto> getCareers() {
         List<History> entities = repository.getCareerAndEducationHistoriesByType(HistoryType.CAREER);

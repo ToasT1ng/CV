@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <link th:href="@{/css/commonView.css}" rel="stylesheet"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" th:src="@{/js/settings.js}"></script>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<th:block th:replace="fragment/header :: headerFragment"></th:block>
+<div id="mainFrame">
+    <div class="paragraph" id="whatDidYouDo">
+        <h1>What did you do?</h1>
+        <div th:each="thingsDoneMap : ${thingsDone}">
+            <table class="whatDidYouDoTable">
+                <caption th:text="${thingsDoneMap.key}"></caption>
+                <tr th:each="thingsDoneEach : ${thingsDoneMap.value}">
+                    <input class="whatDidYouDoForm" type="hidden" th:id="|thingsDoneId_${thingsDoneEach.thingsDoneId}|"
+                           th:value="${thingsDoneEach.thingsDoneId}">
+                    <input class="whatDidYouDoForm" type="hidden" th:id="|era_${thingsDoneEach.era}|"
+                           th:value="${thingsDoneEach.era}">
+                    <td><input class="whatDidYouDoForm" th:id="|category_${thingsDoneEach.thingsDoneId}|" th:value="${thingsDoneEach.category}"
+                               type="text" name="text" size="20" style="width:100%;"></td>
+                    <td><textarea class="whatDidYouDoForm" th:id="|description_${thingsDoneEach.thingsDoneId}|" th:text="${thingsDoneEach.description}" rows="20" cols="70"></textarea></td>
+                </tr>
+                <tr>
+                    <td><input type="text" name="text" size="20" style="width:100%;"></td>
+                    <td><input type="text" name="text" size="20" style="width:100%;"></td>
+                </tr>
+            </table>
+            <button>추가하기</button>
+        </div>
+    </div>
+
+    <div class="paragraph">
+        <button id="goBack">뒤로가기</button>
+        <button id="whatDidYouDoButton">수정하기</button>
+    </div>
+</div>
+</body>
+</html>

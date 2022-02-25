@@ -12,7 +12,7 @@ import java.util.Map;
 
 @Repository
 public class ThingsDoneService {
-    private ThingsDoneDao thingsDoneDao;
+    private final ThingsDoneDao thingsDoneDao;
 
     @Autowired
     public ThingsDoneService(ThingsDoneDao thingsDoneDao) {
@@ -32,5 +32,25 @@ public class ThingsDoneService {
             }
         }
         return returnMap;
+    }
+
+    public List<ThingsDoneDto> getThingsDones() {
+        return thingsDoneDao.getThingsDone();
+    }
+
+    public ThingsDoneDto setThingsDone(ThingsDoneDto thingsDone) {
+        thingsDone.setDescription(thingsDone.getDescription().replaceAll("\\\n","<br/>"));
+        return thingsDoneDao.setThingsDone(thingsDone);
+    }
+
+    public List<ThingsDoneDto> setThingsDones(List<ThingsDoneDto> thingsDones) {
+        for (ThingsDoneDto thingsDoneDto : thingsDones) {
+            thingsDoneDto.setDescription(thingsDoneDto.getDescription().replaceAll("\\\n","<br/>"));
+        }
+        return thingsDoneDao.setThingsDones(thingsDones);
+    }
+
+    public long deleteThingsDone(long id) {
+        return thingsDoneDao.deleteThingsDone(id);
     }
 }

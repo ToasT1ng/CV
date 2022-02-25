@@ -52,4 +52,8 @@ public class HistoryService {
     public long deleteHistory(long id) {
         return dao.deleteHistory(id);
     }
+
+    public List<HistoryDto> getHistories() {
+        return dao.getHistories();
+    }
 }

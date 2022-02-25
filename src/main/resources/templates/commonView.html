@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
     <link th:href="@{/css/commonView.css}" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -11,11 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<div id="navigator">
-    <a th:href="@{/slide}">Slide View</a>
-    <a th:href="@{/}">Common View</a>
-    <a th:href="@{/settings/index}">Settings</a>
-</div>
+<th:block th:replace="fragment/header :: headerFragment"></th:block>
 <div id="mainFrame">
     <div class="paragraph" id="whoAmI">
         <h1>Who Am I?</h1>
@@ -37,7 +33,7 @@
     </div>
 
     <div class="paragraph" id="careerAndAwards">
-        <h1>Career & Awards</h1>
+        <h1>History</h1>
         <div id="educationalHistory">
             <table class="threeDimensionTable">
                 <caption>Educational History</caption>

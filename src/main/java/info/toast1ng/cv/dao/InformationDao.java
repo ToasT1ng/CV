@@ -11,8 +11,11 @@ import java.util.List;
 
 @Repository
 public class InformationDao {
-    @Autowired
-    private InformationRepository informationRepository;
+    private final InformationRepository informationRepository;
+
+    public InformationDao(InformationRepository informationRepository) {
+        this.informationRepository = informationRepository;
+    }
 
     public List<InformationDto> getInformations() {
         List<Information> entities = informationRepository.findAllByGreetingOrNotFalse();
@@ -26,5 +29,28 @@ public class InformationDao {
 
     public InformationDto getGreeting() {
         return informationRepository.findGeeting().toDto();
+    }
+
+    public InformationDto setInformation(InformationDto information) {
+        Information entity = informationRepository.save(information.toEntity());
+        return entity.toDto();
+    }
+
+    public List<InformationDto> setInformations(List<InformationDto> informations) {
+        List<Information> entities = new ArrayList<>();
+        for (InformationDto dto : informations) {
+            entities.add(dto.toEntity());
+        }
+        List<InformationDto> results = new ArrayList<>();
+        List<Information> resultEntities = informationRepository.saveAll(entities);
+        for (Information entity : resultEntities) {
+            results.add(entity.toDto());
+        }
+        return results;
+    }
+
+    public long deleteInformation(long id) {
+        informationRepository.deleteById(id);
+        return id;
     }
 }

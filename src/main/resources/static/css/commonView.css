@@ -126,3 +126,21 @@ td:last-child {
 #techStack {
     font-size: 12pt;
 }
+
+#settingsSelection {
+    width: 90%;
+    position: absolute;
+    top: 20%;
+    left: 2.5%;
+}
+
+#settingsSelection a {
+    text-decoration: none;
+    padding: 15px 32px;
+    margin-top: 5%;
+    text-align: center;
+    display:block;
+    width:100%;
+    background-color:black;
+    color:white;
+}

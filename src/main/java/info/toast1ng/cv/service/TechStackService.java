@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class TechStackService {
-    private TechStackDao techStackDao;
+    private final TechStackDao techStackDao;
 
     @Autowired
     public TechStackService(TechStackDao techStackDao) {
@@ -16,5 +16,10 @@ public class TechStackService {
 
     public TechStackDto getSingleTechStack() {
         return techStackDao.getSingleTechStack();
+    }
+
+    public TechStackDto setTechStack(TechStackDto techStack) throws Exception {
+        techStack.setDescription(techStack.getDescription().replaceAll("\\\n","<br/>"));
+        return techStackDao.setTechStack(techStack);
     }
 }

@@ -1,8 +1,13 @@
 # This is ToasT1ng's CV
-** Caution : This Project is opimized for PC **
+** Caution : This Project is optimized for PC **
 
 ## Link
-[Blog Post - Frontend] (https://toast1ng.tistory.com/9)    
-[Blog Post - DB Migration] (https://toast1ng.tistory.com/10)
+### Blog Post     
+[0. Front-End](https://toast1ng.tistory.com/9)    
+[1. DB Migration](https://toast1ng.tistory.com/10)
+
+
+### Site
+
 
 ## Preview

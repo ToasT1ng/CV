@@ -5,8 +5,9 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @NoArgsConstructor
 @Getter
@@ -24,9 +25,6 @@ public class TechStack {
     }
 
     public void setTechStackId(long techStackId) {
-        if (techStackId == 0) {
-            techStackId = new Date().getTime();
-        }
         this.techStackId = techStackId;
     }
 

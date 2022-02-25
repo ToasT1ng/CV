@@ -9,7 +9,7 @@ import java.util.List;
 
 @Service
 public class InformationService {
-    private InformationDao informationDao;
+    private final InformationDao informationDao;
 
     @Autowired
     public InformationService(InformationDao informationDao) {
@@ -22,5 +22,17 @@ public class InformationService {
 
     public InformationDto getGreeting() {
         return informationDao.getGreeting();
+    }
+
+    public InformationDto setInformation(InformationDto information) {
+        return informationDao.setInformation(information);
+    }
+
+    public List<InformationDto> setInformations(List<InformationDto> informations) {
+        return informationDao.setInformations(informations);
+    }
+
+    public long deleteInformation(long id) {
+        return informationDao.deleteInformation(id);
     }
 }
