@@ -7,7 +7,7 @@ function print_usage() {
   /bin/cat <<EOF
 
 	Usage :
-	    $0 [ -p profile ] [ -h ] [ -help ]
+	    bash $0 [ -p profile ] [ -h ] [ --help ]
 	Option :
 	    -p, --profile       profile
 	    -h, --help          print usages
@@ -76,7 +76,7 @@ echo -e "\n\nClean Docker Volume"
 echo -e "\n\nRun Docker"
 {
   cd /home/ubuntu/${SERVICE}
-  sudo docker build -f Dockerfile toast1ng/${SERVICE}:v0.1 .
+  sudo docker build -f Dockerfile -t toast1ng/${SERVICE}:v0.1 .
 }
 
 {

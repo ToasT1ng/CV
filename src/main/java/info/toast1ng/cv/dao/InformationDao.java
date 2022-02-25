@@ -3,7 +3,6 @@ package info.toast1ng.cv.dao;
 import info.toast1ng.cv.dto.InformationDto;
 import info.toast1ng.cv.entities.Information;
 import info.toast1ng.cv.repository.InformationRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -28,7 +27,12 @@ public class InformationDao {
     }
 
     public InformationDto getGreeting() {
-        return informationRepository.findGeeting().toDto();
+        Information geeting = informationRepository.findGeeting();
+        if (geeting != null) {
+            return geeting.toDto();
+        } else {
+            return new InformationDto();
+        }
     }
 
     public InformationDto setInformation(InformationDto information) {

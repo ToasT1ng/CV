@@ -23,7 +23,7 @@ public class TechStackDao {
         if (entities.size() > 0) {
             return entities.get(0).toDto();
         } else {
-            return null;
+            return new TechStackDto();
         }
     }
 

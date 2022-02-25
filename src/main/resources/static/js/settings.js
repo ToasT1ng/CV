@@ -10,7 +10,7 @@ $(document).ready(function () {
             description: $('#techStackTextArea').val()
         };
 
-        ajaxCall("http://localhost:8080/techStack/setTechStack", arr);
+        ajaxCall("/techStack/setTechStack", arr);
     });
 
     $("#whoAmIEditButton").on("click", function (){
@@ -31,7 +31,7 @@ $(document).ready(function () {
             }
         });
 
-        ajaxCall("http://localhost:8080/information/setInformations", entireArray);
+        ajaxCall("/information/setInformations", entireArray);
     });
 
     $("#whatDidYouDoButton").on("click", function (){
@@ -52,7 +52,7 @@ $(document).ready(function () {
             }
         });
 
-        ajaxCall("http://localhost:8080/thingsDone/setThingsDones", entireArray);
+        ajaxCall("/thingsDone/setThingsDones", entireArray);
     });
 
     $("#careerAndAwardsButton").on("click", function (){
@@ -73,7 +73,7 @@ $(document).ready(function () {
             }
         });
 
-        ajaxCall("http://localhost:8080/history/setHistories", entireArray);
+        ajaxCall("/history/setHistories", entireArray);
     });
 
     function ajaxCall(url, jsonObject) {
