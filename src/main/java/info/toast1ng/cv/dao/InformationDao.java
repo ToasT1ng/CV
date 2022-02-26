@@ -27,7 +27,7 @@ public class InformationDao {
     }
 
     public InformationDto getGreeting() {
-        Information geeting = informationRepository.findGeeting();
+        Information geeting = informationRepository.findGreeting();
         if (geeting != null) {
             return geeting.toDto();
         } else {

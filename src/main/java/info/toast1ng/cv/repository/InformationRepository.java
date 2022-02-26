@@ -13,5 +13,5 @@ public interface InformationRepository extends JpaRepository<Information, Long> 
     List<Information> findAllByGreetingOrNotFalse();
 
     @Query("select i from Information i where i.greetingOrNot = true ")
-    Information findGeeting();
+    Information findGreeting();
 }

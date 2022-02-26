@@ -12,7 +12,7 @@ a:visited {
 }
 
 #mainFrame {
-    width: 60%;
+    width: 75%;
     margin: 5% auto;
 }
 
@@ -99,6 +99,11 @@ td:last-child {
     table-layout: fixed;
 }
 
+.threeDimensionTable caption {
+    font-size: 20pt;
+    font-weight: 600;
+}
+
 .threeDimensionTable * > td:first-child {
     /*color: red;*/
 }
@@ -119,11 +124,41 @@ td:last-child {
     margin-bottom: 80px;
 }
 
+.whatDidYouDoTable caption {
+    font-size: 22pt;
+    font-weight: 600;
+}
+
+.whatDidYouDoTable * td {
+    padding-top:2.5%;
+}
+
+.whatDidYouDoTable * > td:first-child {
+    vertical-align: top;
+
+    text-decoration:underline;
+    text-underline-position:under;
+}
+
 .whatDidYouDoTable * > td:last-child {
     width: 80%;
 }
 
 #techStack {
+    font-size: 14pt;
+}
+
+#techStack * > p:last-child {
+    font-size: 12pt;
+}
+
+#techStack a {
+    color: #7E7E7E;
+    text-decoration: none;
+}
+
+.greyParagraph {
+    color: #7E7E7E;
     font-size: 12pt;
 }
 

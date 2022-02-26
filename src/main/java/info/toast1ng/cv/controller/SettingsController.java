@@ -67,13 +67,13 @@ public class SettingsController {
     }
 
     @GetMapping("/whoAmI")
-    public String whoAmI(Model model, HttpServletRequest request) {
+    public String introduce(Model model, HttpServletRequest request) {
         if (request.getSession().getAttribute("sessionId") == null) {
             return "redirect:/settings/login";
         }
         model.addAttribute("greeting", informationService.getGreeting());
         model.addAttribute("detailInfos", informationService.getInformations());
-        return "whoAmI";
+        return "introduce";
     }
 
     @GetMapping("/history")
@@ -86,12 +86,12 @@ public class SettingsController {
     }
 
     @GetMapping("/whatDidYouDo")
-    public String whatDidYouDo(Model model, HttpServletRequest request) {
+    public String experiences(Model model, HttpServletRequest request) {
         if (request.getSession().getAttribute("sessionId") == null) {
             return "redirect:/settings/login";
         }
         model.addAttribute("thingsDone", thingsDoneService.getThingsDone());
-        return "whatDidYouDo";
+        return "experiences";
     }
 
     @GetMapping("/techStack")

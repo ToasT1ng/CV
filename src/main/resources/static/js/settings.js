@@ -6,7 +6,7 @@ $(document).ready(function () {
 
     $("#techStackEditButton").on("click", function(){
         let arr = {
-            techStackId: 0,
+            techStackId: 1,
             description: $('#techStackTextArea').val()
         };
 
@@ -16,6 +16,20 @@ $(document).ready(function () {
     $("#whoAmIEditButton").on("click", function (){
         let entireArray = [];
         let object = {};
+        $('#subscription').find('input').each(function () {
+            const id = this.id;
+            if (id != null && id !== "") {
+                const idSplit = id.split('_');
+
+                if (id.includes("description")) {
+                    object[idSplit[0]] = this.value;
+                    entireArray.push(object);
+                    object = {};
+                } else {
+                    object[idSplit[0]] = this.value;
+                }
+            }
+        });
         $('#detailInfo').find('input').each(function () {
             const id = this.id;
             if (id != null && id !== "") {
@@ -30,6 +44,8 @@ $(document).ready(function () {
                 }
             }
         });
+
+        // alert(JSON.stringify(entireArray));
 
         ajaxCall("/information/setInformations", entireArray);
     });

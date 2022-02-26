@@ -23,7 +23,7 @@ public class Information {
 
     @Builder
     public Information(long informationId, String category, String description, boolean greetingOrNot) {
-        setInformationId(informationId);
+        setInformationId(informationId, greetingOrNot);
         this.category = category;
         this.description = description;
         this.greetingOrNot = greetingOrNot;
@@ -38,8 +38,8 @@ public class Information {
                 .build();
     }
 
-    public void setInformationId(long informationId) {
-        if (informationId == 0) {
+    public void setInformationId(long informationId, boolean greetingOrNot) {
+        if (informationId == 0 && !greetingOrNot) {
             informationId = new Date().getTime();
         }
         this.informationId = informationId;

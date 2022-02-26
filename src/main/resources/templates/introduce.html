@@ -8,12 +8,15 @@
 <th:block th:replace="fragment/header :: headerFragment"></th:block>
 <div id="mainFrame">
     <div class="paragraph" id="whoAmI">
-        <h1>Who Am I?</h1>
+        <h1>Introduce</h1>
         <div>
             <img id="picture" th:src="@{/picture/nthing_profile.jpeg}" alt="프로필사진">
         </div>
         <div id="subscription">
-            <p th:text="${greeting.description}"></p>
+            <input type="hidden" th:id="|informationId_${greeting.informationId}|" th:value="${greeting.informationId}">
+            <input type="hidden" th:id="|category_${greeting.category}|" th:value="${greeting.category}">
+            <input type="hidden" th:id="|greetingOrNot_${greeting.greetingOrNot}|" th:value="${greeting.greetingOrNot}">
+            <input th:id="|description_${greeting.description}|" th:value="${greeting.description}" type="text" name="text" size="20" style="width:100%;">
         </div>
         <div id="detailInfo">
             <table>

@@ -8,7 +8,7 @@
 <th:block th:replace="fragment/header :: headerFragment"></th:block>
 <div id="mainFrame">
     <div class="paragraph" id="whatDidYouDo">
-        <h1>What did you do?</h1>
+        <h1>Experiences</h1>
         <div th:each="thingsDoneMap : ${thingsDone}">
             <table class="whatDidYouDoTable">
                 <caption th:text="${thingsDoneMap.key}"></caption>
