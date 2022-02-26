@@ -92,6 +92,10 @@ $(document).ready(function () {
         ajaxCall("/history/setHistories", entireArray);
     });
 
+    $("#logout").on("click", function (){
+        logoutAjaxCall("/settings/logout");
+    });
+
     function ajaxCall(url, jsonObject) {
         $.ajax({
             url: url,
@@ -99,6 +103,17 @@ $(document).ready(function () {
             contentType: 'application/json; charset=utf-8',
             data: JSON.stringify(jsonObject),
             dataType: "json",
+            success: function (data) {
+                window.location.href = "/settings/index";
+            }
+        });
+    }
+
+    function logoutAjaxCall(url) {
+        $.ajax({
+            url: url,
+            type: "GET",
+            contentType: 'application/json; charset=utf-8',
             success: function (data) {
                 window.location.href = "/settings/index";
             }

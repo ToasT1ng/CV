@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <th:block th:replace="fragment/head :: headFragment"></th:block>
+<head>
+    <script type="text/javascript" th:src="@{/js/settings.js}"></script>
+</head>
 <body>
 <th:block th:replace="fragment/header :: headerFragment"></th:block>
 <div id="mainFrame">
@@ -10,6 +13,7 @@
         <a th:href="@{/settings/whatDidYouDo}">Experiences</a>
         <a th:href="@{/settings/techStack}">TechStack</a>
     </div>
+    <button id="logout">로그아웃</button>
 </div>
 </body>
 </html>

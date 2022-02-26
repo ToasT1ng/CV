@@ -39,7 +39,7 @@
                 <img id="picture" th:src="@{/picture/nthing_profile.jpeg}" alt="프로필사진">
             </div>
             <div id="subscription">
-                <p th:text="${greeting.description}"></p>
+                <p th:utext="${greeting.description}"></p>
             </div>
             <div id="detailInfo">
                 <table>

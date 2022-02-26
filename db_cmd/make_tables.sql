@@ -23,7 +23,7 @@ Create table `information`
 Create table `tech_stack`
 (
     `tech_stack_id` int          NOT NULL,
-    `description`   varchar(255) NOT NULL,
+    `description`   text NOT NULL,
     PRIMARY KEY (`tech_stack_id`)
 );
 
@@ -33,6 +33,6 @@ Create table `things_done`
     `things_done_id` int          NOT NULL,
     `era`            varchar(255) NOT NULL,
     `category`       varchar(255) NOT NULL,
-    `description`    varchar(255) NOT NULL,
+    `description`    text NOT NULL,
     PRIMARY KEY (`things_done_id`)
 );

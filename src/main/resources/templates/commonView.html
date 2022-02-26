@@ -20,7 +20,7 @@
             <img id="picture" th:src="@{/picture/nthing_profile.jpeg}" alt="프로필사진">
         </div>
         <div id="subscription">
-            <p th:text="${greeting.description}"></p>
+            <p th:utext="${greeting.description}"></p>
         </div>
         <div id="detailInfo">
             <table>
@@ -71,7 +71,7 @@
         <h1>Experiences</h1>
         <div th:each="thingsDoneMap : ${thingsDone}">
             <table class="whatDidYouDoTable">
-                <caption th:text="${thingsDoneMap.key}"></caption>
+                <caption th:utext="${thingsDoneMap.key}"></caption>
                 <tr th:each="thingsDoneEach : ${thingsDoneMap.value}">
                     <td th:utext="${thingsDoneEach.category}"></td>
                     <td th:utext="${thingsDoneEach.description}"></td>

@@ -144,6 +144,24 @@ td:last-child {
     width: 80%;
 }
 
+.whatDidYouDoTable * > td:last-child > ul {
+    margin-top:0;
+    line-height:100%
+}
+
+.whatDidYouDoTable * > td:last-child > ol {
+    list-style-type:none;
+    margin-top:0;
+    padding-left: 20px;
+    line-height:100%;
+    padding-bottom: 0;
+    margin-bottom: 1%;
+}
+
+.whatDidYouDoTable * > td:last-child > ol a {
+    text-decoration: none;
+}
+
 #techStack {
     font-size: 14pt;
 }
@@ -160,6 +178,7 @@ td:last-child {
 .greyParagraph {
     color: #7E7E7E;
     font-size: 12pt;
+    text-decoration:underline white;
 }
 
 #settingsSelection {
@@ -178,4 +197,8 @@ td:last-child {
     width:100%;
     background-color:black;
     color:white;
+}
+
+hr {
+    border-top: 1px dotted #AAAAAA;;
 }
