@@ -31,21 +31,21 @@ public class SettingsController {
     private final String sessionId = UUID.randomUUID().toString();
 
     @GetMapping("/index")
-    public String settings(HttpServletRequest request, Model model) {
+    public String settings(HttpServletRequest request) {
         Object sessionId = request.getSession().getAttribute("sessionId");
-        if (sessionId == null || !authService.passwordIsCorrect(sessionId.toString())) {
+        if (sessionId == null || !sessionId.toString().equals(this.sessionId)) {
             return "redirect:/settings/login";
         }
         return "settings";
     }
 
     @GetMapping("/login")
-    public String settingsLogin(Model model) {
+    public String settingsLogin() {
         return "login";
     }
 
     @PostMapping("/check")
-    public String settingsLogin(@RequestParam String password, HttpServletRequest request, Model model) {
+    public String settingsLogin(@RequestParam String password, HttpServletRequest request) {
         if (authService.passwordIsCorrect(password)) {
             HttpSession session = request.getSession();
             session.setAttribute("sessionId", sessionId);
@@ -67,7 +67,7 @@ public class SettingsController {
     @GetMapping("/whoAmI")
     public String introduce(Model model, HttpServletRequest request) {
         Object sessionId = request.getSession().getAttribute("sessionId");
-        if (sessionId == null || !authService.passwordIsCorrect(sessionId.toString())) {
+        if (sessionId == null || !sessionId.toString().equals(this.sessionId)) {
             return "redirect:/settings/login";
         }
         model.addAttribute("greeting", informationService.getGreeting());
@@ -78,7 +78,7 @@ public class SettingsController {
     @GetMapping("/history")
     public String history(Model model, HttpServletRequest request) {
         Object sessionId = request.getSession().getAttribute("sessionId");
-        if (sessionId == null || !authService.passwordIsCorrect(sessionId.toString())) {
+        if (sessionId == null || !sessionId.toString().equals(this.sessionId)) {
             return "redirect:/settings/login";
         }
         model.addAttribute("careerAndAwards", historyService.getEveryInformation());
@@ -88,7 +88,7 @@ public class SettingsController {
     @GetMapping("/whatDidYouDo")
     public String experiences(Model model, HttpServletRequest request) {
         Object sessionId = request.getSession().getAttribute("sessionId");
-        if (sessionId == null || !authService.passwordIsCorrect(sessionId.toString())) {
+        if (sessionId == null || !sessionId.toString().equals(this.sessionId)) {
             return "redirect:/settings/login";
         }
         model.addAttribute("thingsDone", thingsDoneService.getThingsDone());
