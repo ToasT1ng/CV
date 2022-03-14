@@ -4,15 +4,6 @@ $(document).ready(function () {
         window.location.href = "/settings/index";
     });
 
-    $("#techStackEditButton").on("click", function(){
-        let arr = {
-            techStackId: 1,
-            description: $('#techStackTextArea').val()
-        };
-
-        ajaxCall("/techStack/setTechStack", arr);
-    });
-
     $("#whoAmIEditButton").on("click", function (){
         let entireArray = [];
         let object = {};
@@ -44,8 +35,6 @@ $(document).ready(function () {
                 }
             }
         });
-
-        // alert(JSON.stringify(entireArray));
 
         ajaxCall("/information/setInformations", entireArray);
     });

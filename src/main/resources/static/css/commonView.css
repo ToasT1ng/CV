@@ -51,6 +51,7 @@ h1 {
 }
 
 #subscription {
+    font-size: 16pt;
     width: 65%;
     margin-bottom: 50px;
     float: right;
@@ -104,14 +105,9 @@ td:last-child {
     font-weight: 600;
 }
 
-.threeDimensionTable * > td:first-child {
-    /*color: red;*/
-}
-
 .threeDimensionTable * > td:nth-child(2) {
     font-size: 13pt;
     width: 50%;
-    /*color: red;*/
 }
 
 .threeDimensionTable * > td:last-child {
@@ -129,6 +125,10 @@ td:last-child {
     font-weight: 600;
 }
 
+.whatDidYouDoTable {
+    font-size: 14pt;
+}
+
 .whatDidYouDoTable * td {
     padding-top:2.5%;
 }
@@ -142,37 +142,37 @@ td:last-child {
 
 .whatDidYouDoTable * > td:last-child {
     width: 80%;
+    /*padding-bottom: 0;*/
 }
 
 .whatDidYouDoTable * > td:last-child > ul {
     margin-top:0;
-    line-height:100%
-}
-
-.whatDidYouDoTable * > td:last-child > ol {
-    list-style-type:none;
-    margin-top:0;
-    padding-left: 20px;
-    line-height:100%;
+    margin-bottom:0;
     padding-bottom: 0;
-    margin-bottom: 1%;
 }
 
-.whatDidYouDoTable * > td:last-child > ol a {
+.whatDidYouDoTable * > td:last-child > ul:first-child {
+    /*padding: 0;*/
+    /*margin: 0;*/
+    /*line-height:100%*/
+}
+
+.whatDidYouDoTable * > td:last-child > ul a {
     text-decoration: none;
 }
 
-#techStack {
-    font-size: 14pt;
-}
-
-#techStack * > p:last-child {
+#footer *{
     font-size: 12pt;
+    color: #7E7E7E;
+    text-align: center;
 }
 
-#techStack a {
-    color: #7E7E7E;
+#footer a {
     text-decoration: none;
+}
+
+#footer {
+    margin-bottom: 2%;
 }
 
 .greyParagraph {
@@ -202,3 +202,4 @@ td:last-child {
 hr {
     border-top: 1px dotted #AAAAAA;;
 }
+

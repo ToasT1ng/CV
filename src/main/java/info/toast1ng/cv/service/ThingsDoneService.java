@@ -5,10 +5,7 @@ import info.toast1ng.cv.dto.ThingsDoneDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @Repository
 public class ThingsDoneService {
@@ -20,7 +17,7 @@ public class ThingsDoneService {
     }
 
     public Map<String, List<ThingsDoneDto>> getThingsDone() {
-        Map<String, List<ThingsDoneDto>> returnMap = new HashMap<>();
+        Map<String, List<ThingsDoneDto>> returnMap = new TreeMap<>();
         List<ThingsDoneDto> result = thingsDoneDao.getThingsDone();
         for (ThingsDoneDto thingsDoneDto : result) {
             if (returnMap.containsKey(thingsDoneDto.getEra())) {

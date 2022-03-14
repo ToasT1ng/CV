@@ -26,9 +26,6 @@ public class SettingsController {
     private ThingsDoneService thingsDoneService;
 
     @Autowired
-    private TechStackService techStackService;
-
-    @Autowired
     private AuthService authService;
 
     private final String sessionId = UUID.randomUUID().toString();
@@ -92,14 +89,5 @@ public class SettingsController {
         }
         model.addAttribute("thingsDone", thingsDoneService.getThingsDone());
         return "experiences";
-    }
-
-    @GetMapping("/techStack")
-    public String techStack(Model model, HttpServletRequest request) {
-        if (request.getSession().getAttribute("sessionId") == null) {
-            return "redirect:/settings/login";
-        }
-        model.addAttribute("techStack", techStackService.getSingleTechStack());
-        return "techStack";
     }
 }
