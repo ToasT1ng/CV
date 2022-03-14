@@ -32,7 +32,8 @@ public class SettingsController {
 
     @GetMapping("/index")
     public String settings(HttpServletRequest request, Model model) {
-        if (request.getSession().getAttribute("sessionId") == null) {
+        Object sessionId = request.getSession().getAttribute("sessionId");
+        if (sessionId == null || !authService.passwordIsCorrect(sessionId.toString())) {
             return "redirect:/settings/login";
         }
         return "settings";
@@ -65,7 +66,8 @@ public class SettingsController {
 
     @GetMapping("/whoAmI")
     public String introduce(Model model, HttpServletRequest request) {
-        if (request.getSession().getAttribute("sessionId") == null) {
+        Object sessionId = request.getSession().getAttribute("sessionId");
+        if (sessionId == null || !authService.passwordIsCorrect(sessionId.toString())) {
             return "redirect:/settings/login";
         }
         model.addAttribute("greeting", informationService.getGreeting());
@@ -75,7 +77,8 @@ public class SettingsController {
 
     @GetMapping("/history")
     public String history(Model model, HttpServletRequest request) {
-        if (request.getSession().getAttribute("sessionId") == null) {
+        Object sessionId = request.getSession().getAttribute("sessionId");
+        if (sessionId == null || !authService.passwordIsCorrect(sessionId.toString())) {
             return "redirect:/settings/login";
         }
         model.addAttribute("careerAndAwards", historyService.getEveryInformation());
@@ -84,7 +87,8 @@ public class SettingsController {
 
     @GetMapping("/whatDidYouDo")
     public String experiences(Model model, HttpServletRequest request) {
-        if (request.getSession().getAttribute("sessionId") == null) {
+        Object sessionId = request.getSession().getAttribute("sessionId");
+        if (sessionId == null || !authService.passwordIsCorrect(sessionId.toString())) {
             return "redirect:/settings/login";
         }
         model.addAttribute("thingsDone", thingsDoneService.getThingsDone());
