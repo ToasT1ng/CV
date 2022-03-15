@@ -6,21 +6,28 @@
 <div id="mainFrame">
     <div class="paragraph" id="whoAmI">
         <h1>Introduce</h1>
-        <div>
-            <img id="picture" th:src="@{/picture/nthing_profile.jpeg}" alt="프로필사진">
-        </div>
-        <div id="subscription">
-            <p th:utext="${greeting.description}"></p>
-        </div>
         <div id="detailInfo">
-            <table>
-                <caption>More Information</caption>
-                <tr th:each="detailInfo : ${detailInfos}">
-                    <td th:text="${detailInfo.category}"></td>
-                    <td th:utext="${detailInfo.description}"></td>
-                </tr>
-            </table>
+            <img id="picture" th:src="@{/picture/nthing_profile.jpeg}" alt="프로필사진">
+            <div id="detailInfo2">
+                <p><img class="imgs" th:src="@{/picture/name.png}"> <span class="detailInfo3">Jinah Sung</span></p>
+                <p><img class="imgs" th:src="@{/picture/email.png}"> <span class="detailInfo3">jrainboww9@gmail.com</span></p>
+                <p><img class="imgs" th:src="@{/picture/git.png}"> <span class="detailInfo3"><a href="https://github.com/ToasT1ng/">https://github.com/ToasT1ng/</a></span></p>
+                <p><img class="imgs" th:src="@{/picture/blog.png}"> <span class="detailInfo3"><a href="https://toast1ng.tistory.com/">https://toast1ng.tistory.com/</a></span></p>
+            </div>
+<!--            <table>-->
+<!--&lt;!&ndash;                <caption>More Information</caption>&ndash;&gt;-->
+<!--                <tr th:each="detailInfo : ${detailInfos}">-->
+<!--                    <td th:text="${detailInfo.category}"></td>-->
+<!--                    <td th:utext="${detailInfo.description}"></td>-->
+<!--                </tr>-->
+<!--            </table>-->
+
+
+            <div id="subscription">
+                <p th:utext="${greeting.description}"></p>
+            </div>
         </div>
+
     </div>
 
     <div class="paragraph" id="careerAndAwards">
